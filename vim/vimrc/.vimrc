@@ -1,8 +1,35 @@
+
+
+
+
 set nocompatible
 filetype on
 filetype indent on
 filetype plugin on
-call pathogen#infect()
+
+" Setting up Vundle
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle..."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+        let iCanHazVundle=0
+    endif
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    Plugin 'gmarik/vundle'
+    " Add your plugins
+    Plugin 'Syntastic' 
+    Plugin 'scrooloose/nerdtree'
+    " End of plugins list
+    if iCanHazVundle == 0
+        echo "Installing Plugins, please ignore key map error messages"
+        echo ""
+        :PluginInstall
+    endif
+" End of Vundle Setup
 
 set number
 
@@ -22,7 +49,6 @@ set background=dark
 "endif
 "let g:solarized_termcolors=256
 colorscheme lucius
-call togglebg#map("<F7>")
 
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
