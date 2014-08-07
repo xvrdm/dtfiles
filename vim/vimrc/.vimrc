@@ -45,10 +45,10 @@ set encoding=utf-8
 " =================================
 set background=dark
 
-"if $COLORTERM == 'gnome-terminal'
+if $COLORTERM == 'gnome-terminal'
     "set t_Co=256
-"endif
-"let g:solarized_termcolors=256
+    let g:solarized_termcolors=256
+endif
 "colorscheme lucius
 colorscheme solarized
 call togglebg#map('<F7>')
