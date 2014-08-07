@@ -23,6 +23,7 @@ filetype plugin on
     " Add your plugins
     Plugin 'Syntastic' 
     Plugin 'scrooloose/nerdtree'
+    Plugin 'altercation/vim-colors-solarized'
     " End of plugins list
     if iCanHazVundle == 0
         echo "Installing Plugins, please ignore key map error messages"
@@ -48,10 +49,11 @@ set background=dark
     "set t_Co=256
 "endif
 "let g:solarized_termcolors=256
-colorscheme lucius
-
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
+"colorscheme lucius
+colorscheme solarized
+call togglebg#map('<F7>')
+"highlight Normal ctermbg=NONE
+"highlight nonText ctermbg=NONE
 set cursorline
 set cursorcolumn
 set ruler
