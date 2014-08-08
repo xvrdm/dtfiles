@@ -1,5 +1,6 @@
 vim/bundle/*
-
+vim/bundle/Syntastic
+*.un*
 # OS Generated Files #
 ######################
 .DS_Store
