@@ -3,7 +3,6 @@ filetype on
 filetype indent on
 filetype plugin on
 
-set t_ut=
 " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 " ========================================================================================
 " Setting up Vundle
@@ -22,7 +21,14 @@ set t_ut=
     " Add your plugins
     Plugin 'Syntastic' 
     Plugin 'scrooloose/nerdtree'
+    Plugin 'tpope/vim-surround'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
+    Plugin 'honza/vim-snippets'
     Plugin 'altercation/vim-colors-solarized'
+    Plugin 'Lokaltog/vim-powerline'
+    Plugin 'tpope/vim-markdown'
         " Plugins for Javascript
         Plugin 'jelera/vim-javascript-syntax'
         Plugin 'pangloss/vim-javascript'
@@ -37,10 +43,9 @@ set t_ut=
 " End of Vundle Setup
 " ========================================================================================
 " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-let g:Powerline_symbols = 'fancy'
 set relativenumber
 set numberwidth=5
-
+set laststatus=2
 " Turn on syntax highlighting
 syntax enable 
 set visualbell
@@ -56,8 +61,11 @@ set background=dark
 if $COLORTERM == 'gnome-terminal'
     "set t_Co=256
     colorscheme lucius
+    let g:Powerline_symbols = 'compatible'
+    set t_ut=
 else 
-    let g:solarized_termcolors=256
+    let g:Powerline_symbols = 'fancy'
+    " let g:solarized_termcolors=256
     colorscheme solarized 
 endif
 call togglebg#map('<F7>')
@@ -66,7 +74,7 @@ call togglebg#map('<F7>')
 set cursorline
 set cursorcolumn
 set ruler
-set textwidth=79
+" set textwidth=79
 
 " ======== Indentation ======== 
 set autoindent
@@ -79,6 +87,7 @@ set noexpandtab
 
 " ======== Wrapping ===========
 set wrap
+set textwidth=0 wrapmargin=0 " tuns off wrap automatic insertion of newlines
 set linebreak "Smarter word-sensitive linebreak
 " set showbreak=>\  "Visual clue for linebreak
 
@@ -94,6 +103,11 @@ set incsearch
 set hlsearch
 set showmatch
 set ignorecase
+
+" ========= Abbrev =======
+cnoreabbrev Wq q
+cnoreabbrev wrap set wrap
+cnoreabbrev nowrap set nowrap
 
 " ========= Remap ======== 
 noremap <up> <nop>
@@ -120,7 +134,7 @@ imap <C-c> <CR><CR><Esc>k0
 
 " ======== Windows management ======== 
 set winwidth=84
-set winminwidth=30
+set winminwidth=60
 set winwidth=999
 " set winheight=84
 " set winminheight=10
@@ -155,8 +169,8 @@ function! InsertTabWrapper()
     endif
 endfunction
 
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-p>
+inoremap <s-tab> <c-r>=InsertTabWrapper()<cr>
+" inoremap <s-tab> <c-p>
 
 function! VimCommentToggle()
     let col = col(".") - 1
