@@ -144,7 +144,7 @@ set winwidth=999
 " ======== Autocmd ------------------
 " ===================================
 autocmd BufRead,BufWritePre *.html normal gg=G
-
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd Filetype html nnoremap <leader>b I<!--<esc>A--><esc>
 
 " ==================================
